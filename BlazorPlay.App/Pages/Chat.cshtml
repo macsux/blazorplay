@@ -1,0 +1,16 @@
+﻿@page "/chat"
+@inherits BlazorPlay.App.Pages.ChatModel
+@foreach (var msg in Messages)
+{
+    <div><b>@msg.Sender</b> <i>@msg.Timestamp.ToShortTimeString()</i>: @msg.Message</div>
+}
+<div>
+    <span>Username:</span>
+    <input type="text" bind="@Username" />
+</div>
+<div>
+    <span>Message:</span>
+    <input type="text" bind="@MessageToSend" />
+</div>
+
+<button class="btn btn-primary" onclick=@SendMsg disabled="@SendMsgDisabled">Send</button>
